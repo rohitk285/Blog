@@ -41,7 +41,9 @@ function SearchPage(){
             <div className="grid grid-cols-1 gap-y-3">
                 {searches.map((element, index) => (
                     <div key={index} className="reviewBox">
+                        <h1>Posted on : {element.postedOn}</h1>
                         <h1>Review by {element.username}</h1>
+                        <h1>Name of the book : {element.bookName}</h1>
                         <h1>Rating:  {element.rating} / 5</h1>
                         <p className="mt-4 truncate">" {element.review} "</p>
                     </div>

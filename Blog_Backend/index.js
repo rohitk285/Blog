@@ -19,13 +19,15 @@ mongoose.connect('mongodb://localhost:27017/BookLog')
 const registerSchema = new mongoose.Schema({
     username: {type: String, required: true},
     password: {type: String, required: true},
+    createdOn: {type: String, required: true}
 });
 
 const reviewSchema = new mongoose.Schema({
     username: {type: String, required: true},
     bookName: {type: String, required: true},
     rating: {type: Number, required: true},
-    review: {type: String, required: true}
+    review: {type: String, required: true},
+    postedOn: {type: String, required: true}
 })
 
 const Register = mongoose.model('Register', registerSchema);
@@ -56,6 +58,10 @@ app.get('/', (req, res) => {
 
 app.post('/register', async (req,res) => {
     const {username, password} = req.body;
+    const d = new Date();
+      
+    const time = `${String(d.getDate()).padStart(2, '0')}-` + `${String(d.getMonth()+1).padStart(2, '0')}` + `-${d.getFullYear()}, ` + 
+    `${String(d.getHours()).padStart(2, '0')}` + `:${String(d.getMinutes()).padStart(2, '0')}`;
 
     try{
         const existingUser = await Register.findOne({username: username});
@@ -64,7 +70,7 @@ app.post('/register', async (req,res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
         console.log('hi');
-        await Register.create({username: username, password: hashedPassword});
+        await Register.create({username: username, password: hashedPassword, createdOn: time});
         res.status(201).send('User registered');
     }
     catch(err){
@@ -100,7 +106,12 @@ app.post('/logout', (req, res) => {
 
 app.post('/postReview', async (req, res) => {
     const {authUser, bookName, rating, review} = req.body;
-    const data = {username: authUser, bookName: bookName, rating: rating, review: review};
+    const d = new Date();
+      
+    const time = `${String(d.getDate()).padStart(2, '0')}-` + `${String(d.getMonth()+1).padStart(2, '0')}` + `-${d.getFullYear()}, ` + 
+    `${String(d.getHours()).padStart(2, '0')}` + `:${String(d.getMinutes()).padStart(2, '0')}`;
+
+    const data = {username: authUser, bookName: bookName, rating: rating, review: review, postedOn: time};
 
     try{
         await Review.create(data)
@@ -132,6 +143,18 @@ app.get('/selfReview', async (req, res) => {
     }
     catch(err){
         res.status(500).send("Unable to fetch data");
+    }
+});
+
+app.get('/getDate', async (req, res) => {
+    const {authUser} = req.query;
+
+    try{
+        let response = await Register.findOne({username: authUser}, {_id: 0, createdOn: 1});
+        res.status(201).json(response);
+    }
+    catch(err){
+        res.status(500).send("Unable to fetch date");
     }
 });
 

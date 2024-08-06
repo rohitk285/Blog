@@ -12,7 +12,8 @@ function Review(){
     const {authUser} = useAuthContext();
     const navigate = useNavigate();
 
-    async function postReview(){
+    async function postReview(evt){
+        evt.preventDefault();
         try{
             await axios.post('http://localhost:8000/postReview', {authUser, bookName, rating, review});
             navigate('/');
@@ -27,7 +28,7 @@ function Review(){
             <Navbar />
               <div className="flex flex-col justify-evenly items-center">
                   <h2 className="text-2xl font-bold mb-2 mt-6">Write your review</h2>
-                  <form onSubmit={postReview} className="w-full p-14">
+                  <form onSubmit={(evt) => postReview(evt)} className="w-full p-14">
                       <div className="mb-2">
                         <label htmlFor="bookName" className="label">Name of the book :</label>
                         <input
