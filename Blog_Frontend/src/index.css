@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.menu{
+    @apply text-white hover:text-blue-700 font-medium bg-blue-700 hover:bg-gray-300 rounded-lg p-2;
+}
