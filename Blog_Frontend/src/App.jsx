@@ -5,6 +5,7 @@ import HomePage from "./components/HomePage";
 import Review from "./components/Review";
 import { useAuthContext } from "../context/AuthContext";
 import SearchPage from "./components/SearchPage";
+import ProfilePage from "./components/ProfilePage";
 
 function App(){
 
@@ -19,6 +20,7 @@ function App(){
           <Route path='/' element={authUser ? <HomePage /> : <Navigate to="/login" />}/>
           <Route path='/review' element={authUser ? <Review /> : <Navigate to="/login" />}/>
           <Route path='/search' element={authUser ? <SearchPage /> : <Navigate to="/login" />}/>
+          <Route path='/profile' element={authUser ? <ProfilePage /> : <Navigate to="/login" />}/>
         </Routes>
       </div>
     </Router>

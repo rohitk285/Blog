@@ -40,7 +40,7 @@ function SearchPage(){
           <div className="container mx-auto p-6">
             <div className="grid grid-cols-1 gap-y-3">
                 {searches.map((element, index) => (
-                    <div key={index} className="rounded-lg bg-slate-300 hover:bg-slate-400 w-2/3 flex flex-col justify-around p-4 cursor-pointer">
+                    <div key={index} className="reviewBox">
                         <h1>Review by {element.username}</h1>
                         <h1>Rating:  {element.rating} / 5</h1>
                         <p className="mt-4 truncate">" {element.review} "</p>

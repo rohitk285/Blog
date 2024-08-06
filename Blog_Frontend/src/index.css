@@ -5,3 +5,6 @@
 .menu{
     @apply text-white hover:text-blue-700 font-medium bg-blue-700 hover:bg-gray-300 rounded-lg p-2;
 }
+.reviewBox{
+    @apply rounded-lg bg-slate-300 hover:bg-slate-400 w-2/3 flex flex-col justify-around p-4 cursor-pointer;
+}
