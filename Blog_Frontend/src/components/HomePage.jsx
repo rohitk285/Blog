@@ -25,8 +25,8 @@ function HomePage(){
     return (
         <div className="container mx-auto">
             <Navbar />
-            <h1 className="text-4xl font-bold mb-6 text-black mt-6">Welcome back {authUser}</h1>
-            <div className="container mx-auto p-6">
+            <h1 className="text-4xl font-bold mb-6 text-black mt-6 translate-y-20">Welcome back {authUser}</h1>
+            <div className="container mx-auto p-6 translate-y-20">
                 <div className="grid grid-cols-1 gap-y-3">
                 {reviews.length !== 0 && (
                 reviews.map((element, index) => (

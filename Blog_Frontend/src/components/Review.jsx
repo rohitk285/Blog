@@ -26,7 +26,7 @@ function Review(){
     return (
         <div className="container mx-auto">
             <Navbar />
-              <div className="flex flex-col justify-evenly items-center">
+              <div className="flex flex-col justify-evenly items-center translate-y-20">
                   <h2 className="text-2xl font-bold mb-2 mt-6">Write your review</h2>
                   <form onSubmit={(evt) => postReview(evt)} className="w-full p-14">
                       <div className="mb-2">

@@ -24,9 +24,10 @@ function SearchPage(){
     return(
         <div className="container mx-auto">
             <Navbar />
+            <div className="container mx-auto flex justify-center items-center translate-y-20">
             <input
             type="text"
-            className="form-input p-2 rounded-full border border-black-500 w-1/3 mt-8"
+            className="form-input p-2 rounded-full border border-black-500 w-1/3 mt-8 border-black"
             placeholder="Search for book reviews"
             onKeyPress={(event) => {
               //makes sure that the search button works if Enter key is pressed
@@ -36,9 +37,10 @@ function SearchPage(){
             }}
             onChange={(evt) => setSearchInput(evt.target.value)}
           />
+            </div>
 
-          <div className="container mx-auto p-6">
-            <div className="grid grid-cols-1 gap-y-3">
+          <div className="container mx-auto p-6 translate-y-20">
+            <div className="grid grid-cols-1 gap-y-4">
                 {searches.map((element, index) => (
                     <div key={index} className="reviewBox">
                         <h1>Posted on : {element.postedOn}</h1>

@@ -8,3 +8,6 @@
 .reviewBox{
     @apply rounded-lg bg-slate-300 hover:bg-slate-400 w-2/3 flex flex-col justify-around p-4 cursor-pointer;
 }
+.navbar{
+    @apply fixed top-0 left-0 w-full bg-white p-4 text-white z-50 shadow-md;
+}

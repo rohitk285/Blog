@@ -40,7 +40,7 @@ function ProfilePage(){
     return (
         <div className="container mx-auto">
             <Navbar />
-            <div className="container mx-auto p-6">
+            <div className="container mx-auto p-6 translate-y-20">
             <ul className="text-lg font-bold">
                 <li>Username: {authUser}</li>
                 <li>Reviews posted: {reviewCount}</li>
